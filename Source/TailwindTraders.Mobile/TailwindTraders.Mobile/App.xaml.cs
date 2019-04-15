@@ -1,4 +1,7 @@
 using System.Threading.Tasks;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using TailwindTraders.Mobile.Features.Common;
 using TailwindTraders.Mobile.Features.Logging;
 using TailwindTraders.Mobile.Features.LogIn;
@@ -35,6 +38,11 @@ namespace TailwindTraders.Mobile
         protected override void OnStart()
         {
             base.OnStart();
+
+            AppCenter.Start("ios=c1c61a01-fb3c-460f-91b3-4be1552cf0c7;" +
+                  "uwp={Your UWP App secret here};" +
+                  "android={Your Android App secret here}",
+                  typeof(Analytics), typeof(Crashes))
         }
 
         // It provides a navigatable section for elements which aren't explicitly defined within the Shell. For example,

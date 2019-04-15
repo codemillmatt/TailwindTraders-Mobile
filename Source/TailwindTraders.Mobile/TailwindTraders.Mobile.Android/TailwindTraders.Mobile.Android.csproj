@@ -213,6 +213,9 @@
     <AndroidResource Include="Resources\drawable-mdpi\star.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\star.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\star.png" />
+    <AndroidResource Include="..\Resources\Images\recommended_hinges.jpg">
+      <Link>Resources\drawable-mdpi\recommended_hinges.jpg</Link>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\xml\file_paths.xml">

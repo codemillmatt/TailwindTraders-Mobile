@@ -60,5 +60,10 @@
 	</array>
 	<key>AppCenterAppDelegateForwarderEnabled</key>
 	<string>0</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowArbritraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

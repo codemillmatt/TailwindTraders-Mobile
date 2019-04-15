@@ -30,16 +30,15 @@
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
     <PackageReference Include="System.Buffers" Version="4.5.0" />
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
-    <PackageReference Include="LiveXAML" Version="2.1.59" Condition="'$(Configuration)'=='Debug'" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.232914-pre6" />
     <PackageReference Include="Plugin.XSnack" Version="1.0.17" />
-    <PackageReference Include="Refit" Version="4.6.58" />
+    <PackageReference Include="Refit" Version="4.6.99" />
     <PackageReference Include="CarouselView.FormsPlugin" Version="5.2.0" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.12.0" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.12.0" />
-    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="1.12.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.14.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.14.0" />
+    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="1.14.0" />
     <PackageReference Include="CSharp.OperationResult" Version="0.1.5" />
   </ItemGroup>
   
@@ -73,4 +72,24 @@
     </Reference>
   </ItemGroup>
   
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Services\" />
+    <Folder Include="Pages\" />
+    <Folder Include="Models\Home\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="ViewModels\Home\" />
+    <Folder Include="Models\Product\" />
+    <Folder Include="ViewModels\Product\" />
+    <Folder Include="ViewModels\ProductDetail\" />
+    <Folder Include="ViewModels\ProductCategory\" />
+    <Folder Include="Styles\" />
+    <Folder Include="Services\Fakes\" />
+    <Folder Include="Pages\Product\" />
+    <Folder Include="Pages\Home\" />
+    <Folder Include="ViewModels\TheShell\" />
+    <Folder Include="Pages\ProductCategory\" />
+    <Folder Include="Pages\TheShell\" />
+    <Folder Include="Pages\ProductDetail\" />
+  </ItemGroup>
 </Project>

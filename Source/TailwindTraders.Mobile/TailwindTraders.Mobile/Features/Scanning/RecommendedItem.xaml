@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <Grid
   x:Class="TailwindTraders.Mobile.Features.Scanning.RecommendedItem"
   xmlns="http://xamarin.com/schemas/2014/forms"
@@ -58,7 +58,7 @@
           LineBreakMode="TailTruncation"
           MaxLines="1"
           Style="{StaticResource BrandonGrotesqueMediumDefaultFontStyle}"
-          Text="{Binding Brand.Name}"
+          Text="{Binding SupplierName}"
           TextColor="{StaticResource AccentColor}">
           <Label.Margin>
             <Thickness Top="{StaticResource Negative0.25xDefaultMargin}" />

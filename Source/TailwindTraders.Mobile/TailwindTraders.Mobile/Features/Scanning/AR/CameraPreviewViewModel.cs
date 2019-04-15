@@ -41,8 +41,8 @@ namespace TailwindTraders.Mobile.Features.Scanning.AR
         public override async Task InitializeAsync()
         {
             MessagingCenter.Instance.Subscribe<TensorflowLiteService, DetectionMessage>(
-                this, 
-                TensorflowLiteService.ObjectDetectedMessage, 
+                this,
+                TensorflowLiteService.ObjectDetectedMessage,
                 (_, message) => GatherRecommendedProducts(message));
 
             await base.InitializeAsync();
@@ -101,13 +101,14 @@ namespace TailwindTraders.Mobile.Features.Scanning.AR
 
         private async Task LoadRecommendedProductsAsync(string productType)
         {
-            var result = await TryExecuteWithLoadingIndicatorsAsync(
-                productsAPI.GetProductsAsync(AuthenticationService.AuthorizationHeader, productType));
+            var result = await TryExecuteWithLoadingIndicatorsAsync(productsAPI.GetProductsAsync());
 
             if (result)
             {
-                RecommendedProducts = result.Value.Products.Select(
-                    item => new ProductViewModel(item, FeatureNotAvailableCommand));
+                // TODO: Fix all this
+
+                //RecommendedProducts = result.Value.Products.Select(
+                //item => new ProductViewModel(item, FeatureNotAvailableCommand));
             }
         }
     }
