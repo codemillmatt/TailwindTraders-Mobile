@@ -11,6 +11,9 @@ using TailwindTraders.Mobile.Features.Scanning.Photo;
 using TailwindTraders.Mobile.Framework;
 using TailwindTraders.Mobile.Helpers;
 using Xamarin.Forms;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using TailwindTraders.Mobile.Features.Settings;
 
 namespace TailwindTraders.Mobile.Features.Home
 {
@@ -67,11 +70,16 @@ namespace TailwindTraders.Mobile.Features.Home
         {
             await base.InitializeAsync();
 
-            if (IsNoOneLoggedIn)
-            {
-                await App.NavigateModallyToAsync(new LogInPage());
-                IsBusy = false;
-            }
+            //TODO: Reimplement this
+            //if (IsNoOneLoggedIn)
+            //{
+            //    await App.NavigateModallyToAsync(new LogInPage());
+            //    IsBusy = false;
+            //}
+
+            //TODO: this goes away
+            await LoadDataAsync();
+            IsBusy = false;
         }
 
         public override async Task UninitializeAsync()
@@ -86,16 +94,56 @@ namespace TailwindTraders.Mobile.Features.Home
             RecommendedProducts = new List<Tuple<string, string, AsyncCommand>>
             {
                 Tuple.Create("Hardware", "recommended_powertools.jpg",
-                    new AsyncCommand(_ => App.NavigateToAsync(new ProductCategoryPage("Hardware"), closeFlyout: false)
+                    new AsyncCommand(_ =>
+                    {
+                        Analytics.TrackEvent(AnalyticEvents.ProductCategoryViewEvent,
+                            new Dictionary<string,string>{
+                                {AnalyticEvents.FromPageAreaKey, AnalyticEvents.RecommendedAreaName },
+                                {AnalyticEvents.FromPageEventKey,AnalyticEvents.HomePageName },
+                                {AnalyticEvents.ProductCategoryKey, AnalyticEvents.Hardware }
+                            });
+
+                        return App.NavigateToAsync(new ProductCategoryPage(DefaultSettings.Hardware), closeFlyout: false);
+                    }
                 )),
                 Tuple.Create("Electrical", "recommended_lighting.jpg",
-                    new AsyncCommand(_ => App.NavigateToAsync(new ProductCategoryPage("Electrical"), closeFlyout: false)
+                    new AsyncCommand(_ =>
+                    {
+                        Analytics.TrackEvent(AnalyticEvents.ProductCategoryViewEvent,
+                            new Dictionary<string,string>{
+                                {AnalyticEvents.FromPageAreaKey, AnalyticEvents.RecommendedAreaName },
+                                {AnalyticEvents.FromPageEventKey, AnalyticEvents.HomePageName },
+                                {AnalyticEvents.ProductCategoryKey, AnalyticEvents.Electrical }
+                            });
+
+                        return App.NavigateToAsync(new ProductCategoryPage(DefaultSettings.Electrical), closeFlyout: false);
+                    }
                 )),
                 Tuple.Create("Tiles", "recommended_bathrooms.jpg",
-                    new AsyncCommand(_ => App.NavigateToAsync(new ProductCategoryPage("Tiles"), closeFlyout: false)
+                    new AsyncCommand(_ =>
+                    {
+                        Analytics.TrackEvent(AnalyticEvents.ProductCategoryViewEvent,
+                            new Dictionary<string,string>{
+                                {AnalyticEvents.FromPageAreaKey, AnalyticEvents.RecommendedAreaName },
+                                {AnalyticEvents.FromPageEventKey,AnalyticEvents.HomePageName },
+                                {AnalyticEvents.ProductCategoryKey, AnalyticEvents.Tiles }
+                            });
+
+                        return App.NavigateToAsync(new ProductCategoryPage(DefaultSettings.Tiles), closeFlyout: false);
+                    }
                 )),
                 Tuple.Create("Hinges", "recommended_hinges.jpg",
-                    new AsyncCommand(_ => App.NavigateToAsync(new ProductCategoryPage("Hinges"), closeFlyout: false)
+                    new AsyncCommand(_ =>
+                    {
+                        Analytics.TrackEvent(AnalyticEvents.ProductCategoryViewEvent,
+                            new Dictionary<string,string>{
+                                {AnalyticEvents.FromPageAreaKey, AnalyticEvents.RecommendedAreaName },
+                                {AnalyticEvents.FromPageEventKey, AnalyticEvents.HomePageName },
+                                {AnalyticEvents.ProductCategoryKey, AnalyticEvents.Hinges }
+                            });
+
+                        return App.NavigateToAsync(new ProductCategoryPage(DefaultSettings.Hinges), closeFlyout: false);
+                    }
                 ))
             };
 

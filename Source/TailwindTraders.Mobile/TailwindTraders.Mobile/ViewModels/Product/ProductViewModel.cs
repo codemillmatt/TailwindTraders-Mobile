@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
+using Microsoft.AppCenter.Analytics;
 
 namespace TailwindTraders.Mobile.Features.Product
 {
@@ -6,6 +8,13 @@ namespace TailwindTraders.Mobile.Features.Product
     {
         public ProductViewModel(ProductDTO product, ICommand command)
         {
+            Analytics.TrackEvent(AnalyticEvents.ProductDetailViewEvent,
+                new Dictionary<string, string>{
+                    {AnalyticEvents.FromPageAreaKey, AnalyticEvents.NotApplicableAreaName },
+                    {AnalyticEvents.FromPageEventKey,AnalyticEvents.ProductDetailPageName },
+                    {AnalyticEvents.ProductCategoryKey, product.Sku }
+                });
+
             Product = product;
             Command = command;
         }

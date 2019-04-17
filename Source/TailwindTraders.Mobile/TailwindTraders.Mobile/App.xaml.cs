@@ -40,9 +40,8 @@ namespace TailwindTraders.Mobile
             base.OnStart();
 
             AppCenter.Start("ios=c1c61a01-fb3c-460f-91b3-4be1552cf0c7;" +
-                  "uwp={Your UWP App secret here};" +
-                  "android={Your Android App secret here}",
-                  typeof(Analytics), typeof(Crashes))
+                  "android=1e917834-119d-4639-91bd-94858a3209bc;",
+                  typeof(Analytics), typeof(Crashes));
         }
 
         // It provides a navigatable section for elements which aren't explicitly defined within the Shell. For example,

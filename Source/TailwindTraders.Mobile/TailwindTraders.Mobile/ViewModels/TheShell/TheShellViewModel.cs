@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
+using Microsoft.AppCenter.Analytics;
 using TailwindTraders.Mobile.Features.LogIn;
 using TailwindTraders.Mobile.Features.Product.Category;
 using TailwindTraders.Mobile.Features.Scanning.AR;
@@ -18,8 +20,18 @@ namespace TailwindTraders.Mobile.Features.Shell
 
         public ICommand LogOutCommand => new AsyncCommand(_ => App.NavigateModallyToAsync(new LogInPage()));
 
-        public ICommand ProductTypeCommand => new AsyncCommand(
-            typeId => App.NavigateToAsync(new ProductCategoryPage(typeId as string), closeFlyout: true));
+        public ICommand ProductTypeCommand => new AsyncCommand(typeId =>
+        {
+            Analytics.TrackEvent(AnalyticEvents.HomePageName,
+                new Dictionary<string, string>{
+                    {AnalyticEvents.FromPageAreaKey, AnalyticEvents.FlyoutPageAreaName },
+                    {AnalyticEvents.FromPageEventKey,AnalyticEvents.HomePageName },
+                    {AnalyticEvents.ProductCategoryKey, typeId.ToString() }
+                });
+
+            return App.NavigateToAsync(new ProductCategoryPage(typeId as string), closeFlyout: true);
+        });
+
 
         public ICommand ProfileCommand => FeatureNotAvailableCommand;
 

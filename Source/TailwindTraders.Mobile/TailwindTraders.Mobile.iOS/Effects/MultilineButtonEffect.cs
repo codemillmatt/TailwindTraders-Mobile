@@ -18,6 +18,7 @@ namespace TailwindTraders.Mobile.IOS.Effects
 
         protected override void OnDetached()
         {
+
         }
     }
 }
